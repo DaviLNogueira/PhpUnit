@@ -4,6 +4,7 @@ namespace Alura\Leilao\Service;
 
 use Alura\Leilao\Model\Lance;
 use Alura\Leilao\Model\Leilao;
+use Alura\Leilao\Model\Usuario;
 
 class Avaliador
 {
@@ -46,6 +47,8 @@ class Avaliador
     {
         return $this -> menorValor;
     }
+
+
 
 
 }
