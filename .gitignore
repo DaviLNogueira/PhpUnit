@@ -4,3 +4,4 @@ vendor/
 phpunit
 phpunit-9.5.21.phar
 .phpunit.result.cache
+testes-executados.txt

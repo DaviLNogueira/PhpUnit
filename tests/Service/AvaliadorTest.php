@@ -12,10 +12,9 @@ class AvaliadorTest extends TestCase
     protected function setUp(): void //qualquer chamada de função irá fazer o que está nessa função
 
     {
+        echo "Executando";
         $this -> leiloeiro = new Avaliador();
     }
-
-
 
     /**
      * @dataProvider leiaoEmOrdemAleatorio
@@ -81,7 +80,7 @@ class AvaliadorTest extends TestCase
         $leilao -> recebeLance(new Lance($joao , 2000));
         $leilao -> recebeLance(new  Lance ($maria,2500));
 
-        return [[$leilao]];
+        return [ 'ordem-crescente' => [$leilao]];
     }
 
     public function leiaoEmOrdemDescrescente(): array
@@ -97,7 +96,7 @@ class AvaliadorTest extends TestCase
         $leilao -> recebeLance(new Lance($ana,1700));
 
 
-        return [[$leilao]];
+        return ['ordem -decrescente' => [$leilao]];
 
     }
 
@@ -115,8 +114,8 @@ class AvaliadorTest extends TestCase
 
 
 
-        return [[$leilao]];
-
+        return [
+            'ordem-aleatoria' => [$leilao]];
     }
 
 
