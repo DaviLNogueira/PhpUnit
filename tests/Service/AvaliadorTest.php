@@ -8,6 +8,15 @@ use PHPUnit\Framework\TestCase;
 
 class AvaliadorTest extends TestCase
 {
+
+    protected function setUp(): void //qualquer chamada de função irá fazer o que está nessa função
+
+    {
+        $this -> leiloeiro = new Avaliador();
+    }
+
+
+
     /**
      * @dataProvider leiaoEmOrdemAleatorio
      * @dataProvider leiaoEmOrdemDescrescente
@@ -21,12 +30,12 @@ class AvaliadorTest extends TestCase
 // Arrange - Given
 
 
-        $leiloeiro = new Avaliador();
+
 
 // Act - When
-        $leiloeiro->avalia($leilao);
+       $this->leiloeiro->avalia($leilao);
 
-        $menorValor = $leiloeiro->getMenorValor();
+        $menorValor = $this->leiloeiro->getMenorValor();
 
 // Assert - Then
 
@@ -48,10 +57,10 @@ class AvaliadorTest extends TestCase
         $leilao -> recebeLance(new  Lance ($maria,2000));
         $leilao -> recebeLance(new  Lance ($jorge,1700));
 
-        $leiloeiro = new Avaliador();
-        $leiloeiro->avalia($leilao);
 
-        $maiores = $leiloeiro->getMaioresLances();
+        $this->leiloeiro->avalia($leilao);
+
+        $maiores = $this->leiloeiro->getMaioresLances();
         static::assertCount(3, $maiores);
         static::assertEquals(2000, $maiores[0]->getValor());
         static::assertEquals(1700, $maiores[1]->getValor());
