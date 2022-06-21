@@ -1,0 +1,6 @@
+vendor/
+.idea/
+.vscode/
+phpunit
+phpunit-9.5.21.phar
+.phpunit.result.cache
