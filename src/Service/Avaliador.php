@@ -15,6 +15,10 @@ class Avaliador
 
     public function avalia(Leilao $leilao): void
     {
+
+        if(empty($leilao ->getLances())){
+            throw new \DomainException('Não é possivel analisar teste vazio');
+        }
         foreach ($leilao->getLances() as $lance) {
             if ($lance->getValor() > $this->maiorValor) {
                 $this->maiorValor = $lance->getValor();
@@ -47,6 +51,8 @@ class Avaliador
     {
         return $this -> menorValor;
     }
+
+
 
 
 
