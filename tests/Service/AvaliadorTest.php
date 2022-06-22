@@ -111,9 +111,6 @@ class AvaliadorTest extends TestCase
         $leilao -> recebeLance(new  Lance ($maria,2500));
         $leilao -> recebeLance(new Lance($ana,1700));
         $leilao -> recebeLance(new Lance($joao , 2000));
-
-
-
         return [
             'ordem-aleatoria' => [$leilao]];
     }
@@ -127,6 +124,18 @@ class AvaliadorTest extends TestCase
 
 
 
+    }
+
+    public function testLeilaoFinalizadoNaoPodeSerAvaliado()
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('Leilão já finalizado');
+
+        $leilao = new Leilao('Fiat 147 0KM');
+        $leilao->recebeLance(new Lance(new Usuario('Teste'), 2000));
+        $leilao->finaliza();
+
+        $this->leiloeiro->avalia($leilao);
     }
 
 
